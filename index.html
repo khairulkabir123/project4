@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge day 2</title>
+    <style>
+        body {
+            background-color: blue;
+        }
+        .Mywatch {
+            top: 35%;
+            left:50%;
+            position:fixed;
+            background-color: brown;
+            border-radius: 5px;
+            padding: 50px;
+            box-shadow:rgba(255,255,0) 0px 10px 40px; 
+
+
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="Mywatch">
+        <span class="h"></span>
+        <span class="m"></span><br>
+        <span class="date"></span>
+
+    </div>
+    <script>
+        function mytime(){
+            var mydate=new Date();
+            var hr,min=(mydate.getMinutes()<10) ? "0" + mydate.getMinutes():mydate.getMinutes(),
+                sec=(mydate.getSeconds()<10) ? "0" + mydate.getSeconds():mydate.getSeconds(),
+                m=(mydate.getHours()>=12)? "PM" : "AM";
+
+                if(mydate.getHours()==0){
+                    hr=12;
+
+                }else if(mydate.getHours()>12){
+                    hr=mydate.getHours()-12;
+
+                }
+                else{
+                    hr=mydate.getHours(); 
+                }
+                var currentTime=hr + ":" + min + ":" + sec + ":";
+                document.getElementsByClassName("h")[0].innerHTML=currentTime;
+                document.getElementsByClassName("m")[0].innerHTML=m;
+                var myDay=["Sunday","Monday","Twesday","Wednesday","Thursday","Friday","Saturday"]
+                var myMonth=["January","February","March","April","May","June",
+                  "Jully","August","September","October","November","December"];
+               
+                  var day=mydate.getDate();
+                  var currentDate=myDay[mydate.getDay()] +"," + myMonth[mydate.getMonth()] + day;
+                  document.getElementsByClassName("date")[0].innerHTML=currentDate;
+
+
+                
+
+
+        }
+        mytime();
+        setInterval(function(){
+            mytime();
+        },1000);
+    </script>
+    
+</body>
+</html>
